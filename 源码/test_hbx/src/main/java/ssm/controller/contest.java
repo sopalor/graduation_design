@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ssm.dao.UserDao;
+import ssm.model.User;
+
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +17,11 @@ public class contest {
     UserDao userdao;
     @RequestMapping("sout.do")
     public String t(){
+        User u1=new User();
+        u1.toString();
+        User u=userdao.selectUserById(9);
 
-        List<Map<String,String>> list=userdao.selectAllUser();
-        System.out.println(list.size());
+        System.out.println(u.toString());
         return "welcome";
     }
 }
