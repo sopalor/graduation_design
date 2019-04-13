@@ -22,6 +22,7 @@ public class contest {
         User u=userdao.selectUserById(9);
 
         System.out.println(u.toString());
-        return "welcome";
+        System.out.println(u.getNickname());
+        return "ht/user_login1.jsp";
     }
 }

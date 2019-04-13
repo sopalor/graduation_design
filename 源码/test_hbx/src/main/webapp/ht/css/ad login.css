@@ -1,0 +1,109 @@
+/*#div01-1{
+	width:1263px ;
+	position: relative;
+	margin: auto;
+}
+
+#search{
+	width: 100%;
+	height: 600px;
+	background: url(../img/search_bg.jpg) no-repeat center;
+	min-width: 1263px;
+	position:relative;
+	background-repeat: repeat-x;
+	animation: lzr 20s linear infinite alternate;
+}
+
+@keyframes lzr{
+	0% { background-position: 0 0; }
+	10% { background-position: 10% 0; }
+	10% { background-position: 20% 0; }
+	30% { background-position: 30% 0; }
+	40% {background-position: 40% 0; }
+	50% {background-position: 50% 0; }
+	60% {background-position: 60% 0; }
+	70% {background-position: 70% 0; }
+	80% {background-position: 80% 0; }
+	90% {background-position: 90% 0; }
+	100% {background-position: 100% 0; }
+	
+}
+#search .center {
+width: 600px; 
+height: 400px; 
+background-color: #000; 
+position: absolute; 
+top: 50%; 
+left: 50%; 
+margin: -200px 0 0 -300px; 
+border-radius: 10px; opacity: 0.6;
+}
+
+#search figcaption{
+	font-size: 24px;
+	color: white;
+	padding: 25px 0 5px 25px; 
+	font-family: "微软雅黑";
+}
+
+#search figcaption font{
+	font-size: 15px;
+	
+}
+
+.a1{
+	color: white;
+	text-decoration: none;
+}
+.a1:hover{
+	color: white;
+	text-decoration:underline;
+}
+
+#search .table{
+	width: 400px;
+	height: 150px;
+	position: absolute;
+	top: 23%; left: 17%; 
+
+	color: white;
+	font-size: 18px;
+	
+}
+
+#search .table .table_1{
+	width: 300px; 
+	height: 25px;
+	position: absolute; 
+
+	margin: -13px 0 0 -310px; 
+	border-radius: 10px; 
+	border: 1px solid #666; 
+	font-size: 16px; 
+	color: #666; 
+	outline: none; 
+
+}
+
+#search .button { 
+width: 200px; 
+height: 40px; 
+position: absolute; 
+top: 68%; 
+left: 34%; 
+cursor: pointer; 
+
+font-size: 22px; 
+border-radius: 10px; 
+border: none; 
+color: #666; 
+font-weight: bold;
+outline: none; 
+background-color: #eee;
+}
+
+#search .register{
+	padding: 305px 0 15px 520px; 
+	font-family: "微软雅黑";
+	font-size: 14px;
+}*/
