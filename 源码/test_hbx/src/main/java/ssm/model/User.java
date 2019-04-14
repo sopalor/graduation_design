@@ -1,90 +1,96 @@
 package ssm.model;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.Date;
+
 
 /**
  * Created by Zhangxq on 2016/7/15.
  */
 
 public class User {
-    private Integer id;
-    private String username;
-    private String password;
-    private String nickname;
-    private String touxiang;
+    private String CId;
+    private String CName;
+    private String CPassword;
+    private String CSex;
+    private String CSfzh;
+    private String CEmail;
+    private String CNickname;
+    private String CPhone;
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", touxiang='" + touxiang + '\'' +
-                ", score=" + score +
-                ", isexpert='" + isexpert + '\'' +
+                "CId='" + CId + '\'' +
+                ", CName='" + CName + '\'' +
+                ", CPassword='" + CPassword + '\'' +
+                ", CSex='" + CSex + '\'' +
+                ", CSfzh='" + CSfzh + '\'' +
+                ", CEmail='" + CEmail + '\'' +
+                ", CNickname='" + CNickname + '\'' +
+                ", CPhone='" + CPhone + '\'' +
                 '}';
     }
 
-    public Integer getId() {
-        return id;
+    public String getCId() {
+        return CId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCId(String CId) {
+        this.CId = CId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCName() {
+        return CName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCName(String CName) {
+        this.CName = CName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCPassword() {
+        return CPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCPassword(String CPassword) {
+        this.CPassword = CPassword;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getCSex() {
+        return CSex;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setCSex(String CSex) {
+        this.CSex = CSex;
     }
 
-    public String getTouxiang() {
-        return touxiang;
+    public String getCSfzh() {
+        return CSfzh;
     }
 
-    public void setTouxiang(String touxiang) {
-        this.touxiang = touxiang;
+    public void setCSfzh(String CSfzh) {
+        this.CSfzh = CSfzh;
     }
 
-    public Integer getScore() {
-        return score;
+    public String getCEmail() {
+        return CEmail;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setCEmail(String CEmail) {
+        this.CEmail = CEmail;
     }
 
-    public String getIsexpert() {
-        return isexpert;
+    public String getCNickname() {
+        return CNickname;
     }
 
-    public void setIsexpert(String isexpert) {
-        this.isexpert = isexpert;
+    public void setCNickname(String CNickname) {
+        this.CNickname = CNickname;
     }
 
-    private Integer score;
-    private String isexpert;
+    public String getCPhone() {
+        return CPhone;
+    }
+
+    public void setCPhone(String CPhone) {
+        this.CPhone = CPhone;
+    }
 }

@@ -3,22 +3,36 @@
 <mapper namespace="ssm.dao.UserDao">
 
     <resultMap id="UserBaseMap" type="ssm.model.User">
-        <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="username" property="username" jdbcType="INTEGER"/>
-        <result column="password" property="password" jdbcType="VARCHAR"/>
-        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
-        <result column="touxiang" property="touxiang" jdbcType="VARCHAR"/>
-        <result column="score" property="score" jdbcType="INTEGER"/>
-        <result column="isexpert" property="isexpert" jdbcType="VARCHAR"/>
+        <id column="c_id" property="CId" jdbcType="VARCHAR"/>
+        <result column="c_name" property="CName" jdbcType="VARCHAR"/>
+        <result column="c_password" property="CPassword" jdbcType="VARCHAR"/>
+        <result column="c_sex" property="CSex" jdbcType="VARCHAR"/>
+        <result column="c_sfzh" property="CSfzh" jdbcType="VARCHAR"/>
+        <result column="c_email" property="CEmail" jdbcType="VARCHAR"/>
+        <result column="c_nickname" property="CNickname" jdbcType="VARCHAR"/>
+        <result column="c_phone" property="CPhone" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="selectUserById" parameterType="java.lang.Integer" resultMap="UserBaseMap">
-        SELECT * FROM users
-        WHERE id = #{userId}
+    <select id="selectUserById" parameterType="java.lang.String" resultMap="UserBaseMap">
+        SELECT * FROM t_users
+        WHERE c_id = #{userId}
     </select>
 
     <select id="selectAllUser" resultMap="UserBaseMap">
-        SELECT * FROM users
+        SELECT * FROM t_users
     </select>
 
+    <select id="selectLoginUser" resultMap="UserBaseMap">
+        SELECT * FROM t_users where c_name=#{name} and c_password=#{password}
+    </select>
+    <insert id="insertUser" >
+        insert into t_users(c_id,c_name,c_password) values (REPLACE(UUID(), '-', ''),#{name},#{password})
+    </insert>
+    <select id="selectNicknameById" resultType="STRING" >
+        select c_nickname from t_users where c_id=#{id}
+    </select>
+    <update id="updateUser" parameterType="ssm.model.User" >
+        update t_users set c_nickname=#{CNickname},c_sfzh=#{CSfzh},c_phone=#{CPhone},c_email=#{CEmail},c_sex=#{CSex}
+        where c_id=#{CId}
+    </update>
 </mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.TicketDao">
+    <resultMap id="TicketBaseMap" type="ssm.model.Ticket">
+        <id column="c_id" property="CId" jdbcType="VARCHAR"/>
+        <result column="c_cfd" property="CCfd" jdbcType="VARCHAR"/>
+        <result column="c_mdd" property="CMdd" jdbcType="VARCHAR"/>
+        <result column="d_rq" property="DRq" jdbcType="DATE"/>
+        <result column="n_syzw" property="NSyzw" jdbcType="INTEGER"/>
+        <result column="c_hkgs" property="CHkgs" jdbcType="VARCHAR"/>
+        <result column="d_cfsj" property="DCfsj" jdbcType="DATE"/>
+        <result column="d_ddsj" property="DDdsj" jdbcType="DATE"/>
+        <result column="n_jg" property="NJg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectAll" resultMap="TicketBaseMap">
+        select * from t_ticket
+    </select>
+</mapper>

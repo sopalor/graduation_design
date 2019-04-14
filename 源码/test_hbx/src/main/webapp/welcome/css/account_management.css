@@ -1,0 +1,40 @@
+
+#container .ticket .table_2{
+	width: 500px;
+	border-collapse: collapse;
+	margin: 20px 0 0 200px;
+	border: 1px solid #ddd;
+	font-size: 17px;
+	text-align: left;
+
+}
+
+
+
+#container .ticket .table_2 .td1{
+	width: 150px;
+	text-align: center;
+}
+
+#container .ticket .table_2 td{
+	text-align: left;
+}
+
+#container .ticket .table_2 input{
+	height: 20px;
+	color:#999999;
+}
+
+#container .ticket .table_2 .submit1{
+	width: 100px;
+	height: 30px;
+	border-radius: 4px;
+	background-color: #f60;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+   margin: auto;
+	margin-left: 200px;
+}
