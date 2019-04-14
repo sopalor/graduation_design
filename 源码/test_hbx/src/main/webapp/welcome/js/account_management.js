@@ -4,5 +4,5 @@ $(document).ready(function(){
     $("input[name='sex']").eq(0).attr('checked',true);
     else
         $("input[name='sex']").eq(1).attr('checked',true);
-    
+
 });

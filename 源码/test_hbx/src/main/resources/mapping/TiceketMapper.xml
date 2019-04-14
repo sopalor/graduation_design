@@ -15,4 +15,17 @@
     <select id="selectAll" resultMap="TicketBaseMap">
         select * from t_ticket
     </select>
+    <select id="selectAllByTj" resultMap="TicketBaseMap">
+        select * from t_ticket <where>1=1
+        <if test="cfd !=null and cfd !=''">
+          and  c_cfd=#{cfd}
+        </if>
+        <if test="mdd !=null and mdd !=''">
+         and   c_mdd=#{mdd}
+        </if>
+        <if test="rq !=null and rq !=''">
+          and  Date(d_rq)=#{rq}
+        </if>
+    </where>
+    </select>
 </mapper>

@@ -10,6 +10,7 @@ import ssm.dao.UserDao;
 import ssm.model.Ticket;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -27,5 +28,14 @@ public class TicketController {
       //  req.getSession().setAttribute("id",req.getParameter("id"));
         req.setAttribute("list",list);
        return "welcome/home_page.jsp";
+    }
+    @RequestMapping(value = "TiaoJian")
+    public String TiaoJian(HttpServletRequest req){
+        String cfd=req.getParameter("cfd");
+        String mdd=req.getParameter("mdd");
+        String rq=req.getParameter("rq");
+        List<Ticket> list=ticketDao.selectAllByTj(cfd,mdd,rq);
+        req.setAttribute("list",list);
+        return "welcome/home_page.jsp";
     }
 }

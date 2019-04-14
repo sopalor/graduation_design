@@ -9,7 +9,7 @@
 		<base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<title></title>
-		<script src="./js/jquery-1.4.2.min.js"></script>
+		<script src="./welcome/js/jquery-1.4.2.min.js"></script>
 		<link rel="stylesheet" href="welcome/css/home_page.css" />
 		<link rel="stylesheet" href="welcome/css/user_login.css" />
 
@@ -40,18 +40,18 @@
 				<div id="container"> 
 						
 					<div class="ticket">
-						<form action="###">
+						<form action="./ticket/TiaoJian">
 							<h2>机票预定</h2>
 
 							<div class="form left">
-								<p> <label for="from_city">出发城市</label><br/> <input type="text" name="from_city" id="from_city" placeholder="城市名"> </p>
+								<p> <label for="cfd">出发城市</label><br/> <input type="text" name="cfd" id="cfd" placeholder="城市名"> </p>
 								
 							</div>
 							<div class="form middle">
-								<p> <label for="to_city">返回城市</label><br/> <input type="text" name="to_city" id="to_city" placeholder="城市名"> </p>
+								<p> <label for="mdd">返回城市</label><br/> <input type="text" name="mdd" id="mdd" placeholder="城市名"> </p>
 							</div>
 							<div class="form right">
-								<p> <label for="from_date">出发时间</label><br/> <input type="text" name="from_date" id="from_date" placeholder="时间/日期"> </p>
+								<p> <label for="rq">出发时间</label><br/> <input type="text" name="rq" id="rq" placeholder="时间/日期"> </p>
 								
 							</div>
 							<div class="form button">
