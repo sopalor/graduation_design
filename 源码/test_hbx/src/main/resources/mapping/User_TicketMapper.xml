@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.User_TicketDao">
+    <resultMap id="TicketBaseMap" type="ssm.model.Ticket">
+        <id column="tid" property="CId" jdbcType="VARCHAR"/>
+        <result column="c_cfd" property="CCfd" jdbcType="VARCHAR"/>
+        <result column="c_mdd" property="CMdd" jdbcType="VARCHAR"/>
+        <result column="d_rq" property="DRq" jdbcType="DATE"/>
+        <result column="n_syzw" property="NSyzw" jdbcType="INTEGER"/>
+        <result column="c_hkgs" property="CHkgs" jdbcType="VARCHAR"/>
+        <result column="d_cfsj" property="DCfsj" jdbcType="DATE"/>
+        <result column="d_ddsj" property="DDdsj" jdbcType="DATE"/>
+        <result column="n_jg" property="NJg" jdbcType="VARCHAR"/>
+        <result column="n_zwzs" property="NZwzs" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="UserBaseMap" type="ssm.model.User">
+        <id column="uid" property="CId" jdbcType="VARCHAR"/>
+        <result column="c_name" property="CName" jdbcType="VARCHAR"/>
+        <result column="c_password" property="CPassword" jdbcType="VARCHAR"/>
+        <result column="c_sex" property="CSex" jdbcType="VARCHAR"/>
+        <result column="c_sfzh" property="CSfzh" jdbcType="VARCHAR"/>
+        <result column="c_email" property="CEmail" jdbcType="VARCHAR"/>
+        <result column="c_nickname" property="CNickname" jdbcType="VARCHAR"/>
+        <result column="c_phone" property="CPhone" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap type="ssm.model.User_Ticket" id="User_TicketBaseMap">
+        <id column="utid" property="CId" jdbcType="VARCHAR"/>
+        <association property="ssm.model.User" resultMap="UserBaseMap"/>
+        <association property="ssm.model.Ticket" resultMap="TicketBaseMap"/>
+    </resultMap>
+
+    <select id="selectAllMyTickets" resultMap="User_TicketBaseMap">
+        SELECT
+        u.c_id as uid,
+        t.c_id  as tid,
+        ut.c_id as  utid,ut.*,u.*,t.*
+        FROM
+        t_user_ticket ut,
+        t_users u,
+        t_ticket t
+        WHERE
+        ut.c_userid = u.c_id
+        AND ut.c_ticketid = t.c_id
+    </select>
+
+</mapper>

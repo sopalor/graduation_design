@@ -1,0 +1,45 @@
+#container .ticket .new .table_4{
+	width: 100%;
+/*	border-collapse: collapse;*/
+	margin: 20px 0 0 0;
+	border: 1px solid #666666;
+	font-size: 16px;
+	text-align: center;
+	border-collapse: collapse;
+	
+}
+
+#container .ticket .table_4 td {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #666666;
+}
+
+#container .ticket .table_4 tr:nth-child(2n) {
+	background-color: #FAFAFA;
+}
+
+#container .ticket .table_4 tr:hover {
+	background-color: #FAFAFA;
+}
+
+#container .ticket .back{
+	width: 100px;
+	height: 25px;
+
+	position: relative;
+	margin-top: -42px;
+	margin-left: 877px;
+	font-size: 16px;
+}
+
+#container .ticket .a2{
+	color: #666666;
+	text-decoration: none;
+}
+
+.a2:hover{
+	color: #666666;
+	text-decoration: underline;
+}

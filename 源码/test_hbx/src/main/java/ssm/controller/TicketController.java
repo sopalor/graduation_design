@@ -38,4 +38,5 @@ public class TicketController {
         req.setAttribute("list",list);
         return "welcome/home_page.jsp";
     }
+
 }

@@ -14,6 +14,7 @@ public class Ticket {
     private Timestamp  DCfsj;
     private Timestamp DDdsj;
     private BigDecimal  NJg;
+    private Integer NZwzs;
 
     @Override
     public String toString() {
@@ -27,6 +28,7 @@ public class Ticket {
                 ", DCfsj=" + DCfsj +
                 ", DDdsj=" + DDdsj +
                 ", NJg=" + NJg +
+                ", NZwzs=" + NZwzs +
                 '}';
     }
 
@@ -100,5 +102,13 @@ public class Ticket {
 
     public void setNJg(BigDecimal NJg) {
         this.NJg = NJg;
+    }
+
+    public Integer getNZwzs() {
+        return NZwzs;
+    }
+
+    public void setNZwzs(Integer NZwzs) {
+        this.NZwzs = NZwzs;
     }
 }

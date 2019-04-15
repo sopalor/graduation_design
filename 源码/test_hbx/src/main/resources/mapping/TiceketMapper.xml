@@ -11,6 +11,7 @@
         <result column="d_cfsj" property="DCfsj" jdbcType="DATE"/>
         <result column="d_ddsj" property="DDdsj" jdbcType="DATE"/>
         <result column="n_jg" property="NJg" jdbcType="VARCHAR"/>
+        <result column="n_zwzs" property="NZwzs" jdbcType="INTEGER"/>
     </resultMap>
     <select id="selectAll" resultMap="TicketBaseMap">
         select * from t_ticket
@@ -28,4 +29,5 @@
         </if>
     </where>
     </select>
+
 </mapper>

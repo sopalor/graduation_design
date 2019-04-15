@@ -20,17 +20,17 @@
 		<div id="div01-1">
 			
 			<div id="headline">
-				
+
 				<div id="div01-2">
 					<div id="div01-2-1">欢迎用户：${sessionScope.nickname}，<a href="" class="a1">退出</a></div>
 					<div id="div01-2-2">
-						<div id="div01-2-2-1"><a  href="../ticket/init?id=${sessionScope.id}" class="a1"><h4>首页</h4></a></div>
+						<div id="div01-2-2-1"><a href="../ticket/init?id=${sessionScope.id}" class="a1"><h4>首页</h4></a></div>
 						<div id="div01-2-2-1"><a href="../user/change?id=${sessionScope.id}" class="a1"><h4>账号管理</h4></a></div>
-						<div id="div01-2-2-1"><a href="ticket.html" class="a1"><h4>我的机票</h4></a></div>
+						<div id="div01-2-2-1"><a href="../user_ticket/myticket?id=${sessionScope.id}" class="a1"><h4>我的机票</h4></a></div>
 
 						<div id="div01-2-2-1"><a href="aboutme.html" class="a1"><h4>关于我们</h4></a></div>
-					</div>		
-				
+					</div>
+
 				</div>
 				 <div class="center"> 
 					<hgroup> 
