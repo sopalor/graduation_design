@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var sex=$('hidden_sex').val();
+    var sex=$('#hidden_sex').val();
     if(sex=='男')
     $("input[name='sex']").eq(0).attr('checked',true);
     else

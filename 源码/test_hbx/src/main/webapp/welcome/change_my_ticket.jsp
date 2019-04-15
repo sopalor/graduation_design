@@ -44,7 +44,7 @@
 						<div class="new">
 							<h2>改签机票</h2>
 							<div class="back">
-								<a href="" class="a2" >返回</a>
+								<a href="../user_ticket/myticket?id=${sessionScope.id}" class="a2" >返回</a>
 							</div>
 							<form onsubmit="" name="form4">
 							<table class="table_3">
@@ -60,66 +60,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>北京-成都</td>
-										<td>10-15</td>
-										<td class="price">¥745</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>春秋航空</td>
-										<td>
-
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
-									<tr>
-										<td>北京-上海</td>
-										<td>10-15</td>
-										<td class="price">¥479</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>南方航空</td>
-										<td >
-
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
-									<tr>
-										<td>北京-深圳</td>
-										<td>10-15</td>
-										<td class="price">¥561</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>西部航空</td>
-										<td>
-
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
-									<tr>
-										<td>北京-杭州</td>
-										<td>10-15</td>
-										<td class="price">¥378</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>天津航空</td>
-										<td>
-
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
-									<tr>
-										<td>北京-广州</td>
-										<td>10-15</td>
-										<td class="price">¥612</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>首都航空</td>
-										<td>
-
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
+									<c:forEach var="item"   items="${requestScope.list}"   varStatus="status"  >
+										<tr>
+											<td>${item.CCfd}-${item.CMdd}</td>
+											<td>${item.DRq}</td>
+											<td class="price">¥${item.NJg}</td>
+											<td>${item.DCfsj}</td>
+											<td>${item.DDdsj}</td>
+											<td>${item.CHkgs}</td>
+											<td>
+												<a href="../user_ticket/change?id=${item.CId}&u_t_id=${requestScope.u_t_id}" class="reserve1">改签</a>
+											</td>
+										</tr>
+									</c:forEach>
 									
 								</tbody>
 								

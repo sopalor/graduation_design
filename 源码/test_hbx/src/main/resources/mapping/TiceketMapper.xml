@@ -29,5 +29,11 @@
         </if>
     </where>
     </select>
+    <select id="selectAllByZhongLei" resultMap="TicketBaseMap">
+        select * from t_ticket  t
+        where t.c_cfd in (select c_cfd from t_ticket where c_id=#{id})
+        and t.c_mdd in (select c_mdd from t_ticket where c_id=#{id})
+    </select>
+
 
 </mapper>

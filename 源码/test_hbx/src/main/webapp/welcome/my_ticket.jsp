@@ -9,9 +9,9 @@
 		<base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="css/home_page.css" />
-		<link rel="stylesheet" href="css/user login.css" />
-		<link rel="stylesheet" href="css/my_ticket.css" />
+		<link rel="stylesheet" href="welcome/css/home_page.css" />
+		<link rel="stylesheet" href="welcome/css/user login.css" />
+		<link rel="stylesheet" href="welcome/css/my_ticket.css" />
 	</head>
 	<body>
 		<div id="div01-1">
@@ -55,19 +55,21 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>北京-成都</td>
-										<td>10-15</td>
-										<td class="price">¥745</td>
-										<td>07:00</td>
-										<td>09:00</td>
-										<td>春秋航空</td>
-										<td>
-											<a href="###" class="reserve1">查看</a>
-											<a href="###" class="reserve1">退订</a>
-											<a href="###" class="reserve1">改签</a>
-										</td>
-									</tr>
+									<c:forEach var="item"   items="${requestScope.list}"   varStatus="status"  >
+										<tr>
+											<td>${item.TTicket.CCfd}-${item.TTicket.CMdd}</td>
+											<td>${item.TTicket.DRq}</td>
+											<td class="price">¥${item.TTicket.NJg}</td>
+											<td>${item.TTicket.DCfsj}</td>
+											<td>${item.TTicket.DDdsj}</td>
+											<td>${item.TTicket.CHkgs}</td>
+											<td>
+												<a href="../user_ticket/ticketinfo?id=${item.CId}" class="reserve1">查看</a>
+												<a href="../user_ticket/deleteticket?id=${item.CId}" class="reserve1">退订</a>
+												<a href="../user_ticket/changeticket?id=${item.TTicket.CId}&u_t_id=${item.CId}" class="reserve1">改签</a>
+											</td>
+										</tr>
+									</c:forEach>
 
 									
 								</tbody>

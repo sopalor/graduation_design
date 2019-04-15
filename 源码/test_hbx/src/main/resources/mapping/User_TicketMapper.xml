@@ -25,8 +25,9 @@
     </resultMap>
     <resultMap type="ssm.model.User_Ticket" id="User_TicketBaseMap">
         <id column="utid" property="CId" jdbcType="VARCHAR"/>
-        <association property="ssm.model.User" resultMap="UserBaseMap"/>
-        <association property="ssm.model.Ticket" resultMap="TicketBaseMap"/>
+        <result column="n_sit" property="NSit" jdbcType="INTEGER"/>
+        <association property="UUser" resultMap="UserBaseMap"/>
+        <association property="TTicket" resultMap="TicketBaseMap"/>
     </resultMap>
 
     <select id="selectAllMyTickets" resultMap="User_TicketBaseMap">
@@ -41,6 +42,34 @@
         WHERE
         ut.c_userid = u.c_id
         AND ut.c_ticketid = t.c_id
+        and u.c_id=#{id}
     </select>
-
+    <select id="selectOneMyTickets" resultMap="User_TicketBaseMap">
+        SELECT
+        u.c_id as uid,
+        t.c_id  as tid,
+        ut.c_id as  utid,ut.*,u.*,t.*
+        FROM
+        t_user_ticket ut,
+        t_users u,
+        t_ticket t
+        WHERE
+        ut.c_userid = u.c_id
+        AND ut.c_ticketid = t.c_id
+        and ut.c_id=#{id}
+    </select>
+    <insert id="insertOneTicket" >
+        insert into t_user_ticket(c_id,c_userid,c_ticketid,n_sit) values (REPLACE(UUID(), '-', ''),#{uid},#{tid},#{sit})
+    </insert>
+    <select id="selectSitList" resultType="INTEGER">
+        SELECT
+       ut.n_sit
+        FROM
+        t_user_ticket ut
+        WHERE
+       ut.c_ticketid = #{id}
+    </select>
+    <delete id="deleteOneTicket">
+        delete from t_user_ticket where c_id=#{id}
+    </delete>
 </mapper>

@@ -83,7 +83,7 @@
 											<td>${item.DDdsj}</td>
 											<td>${item.CHkgs}</td>
 											<td>
-												<a href="###" class="reserve">预定</a>
+												<a href="../user_ticket/add_user_ticket?id=${item.CId}" class="reserve">预定</a>
 											</td>
 										</tr>
 									</c:forEach>

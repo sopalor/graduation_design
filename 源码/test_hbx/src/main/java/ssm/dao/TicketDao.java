@@ -9,5 +9,5 @@ import java.util.List;
 public interface TicketDao {
     List<Ticket> selectAll();
     List<Ticket> selectAllByTj(@Param("cfd") String cfd,@Param("mdd") String mdd,@Param("rq")String rq);
-
+    List<Ticket> selectAllByZhongLei(@Param("id")String id);
 }
