@@ -34,6 +34,8 @@
         where t.c_cfd in (select c_cfd from t_ticket where c_id=#{id})
         and t.c_mdd in (select c_mdd from t_ticket where c_id=#{id})
     </select>
-
+    <delete id="deleteTicketByid">
+        delete from t_ticket where c_id=#{id}
+    </delete>
 
 </mapper>

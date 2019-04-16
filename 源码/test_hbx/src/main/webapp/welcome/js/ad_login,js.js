@@ -11,6 +11,9 @@ $(document).ready(function(){
                 if(data.flag=='success')
                     window.location.href="./ticket/init?id="+data.id;
                 else
+                    if(data.flag=='admin')
+                        window.location.href="./admin/init";
+                    else
                     alert("登陆失败");
             },
             error: function() {
