@@ -40,4 +40,11 @@ public class AdminController {
         req.setAttribute("list",count);
         return "admin/init";
     }
+    @RequestMapping(value = "addticket")
+    public String addticket(HttpServletRequest req){
+        String cfd=req.getParameter("cfd");
+        String mdd=req.getParameter("mdd");
+        String mdd=req.getParameter("mdd");
+        return "admin/init";
+    }
 }

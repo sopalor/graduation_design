@@ -10,6 +10,9 @@
 		%>
 		<base href="<%=basePath%>">
 		<link rel="stylesheet" href="ht/css/console_check_del.css" />
+		<script src="./ht/js/jquery-1.4.2.min.js"></script>
+		<script src="./ht/js/console.js"></script>
+
 	</head>
 	<body>
 		<div id="div-1">
@@ -18,8 +21,8 @@
 			</div>
 			<div id="div-3">
 				<div id="div-3-1">
-					<div id="div-3-1-2"><button type="button" class="button1">机票查询\删除</button></div>
-					<div id="div-3-1-2"><button type="button">机票添加</button></div>
+					<div id="div-3-1-2"><button type="button" class="button1"  id="init">机票查询\删除</button></div>
+					<div id="div-3-1-2"><button type="button" id="add_ticket">机票添加</button></div>
 				</div>
 				<div id="div-3-2">
 					<h3>机票的查询与删除</h3>

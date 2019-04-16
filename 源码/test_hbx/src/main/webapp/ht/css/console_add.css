@@ -1,0 +1,13 @@
+#div-1 .button2{
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 4px;
+	background-color: #f60;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	float: left;
+	margin-left: 85px;
+}
