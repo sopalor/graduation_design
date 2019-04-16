@@ -37,5 +37,8 @@
     <delete id="deleteTicketByid">
         delete from t_ticket where c_id=#{id}
     </delete>
-
+    <insert id="insertOneTicket" parameterType="ssm.model.Ticket">
+        insert into t_ticket values(#{CId},#{CCfd},#{CMdd},#{DRq},
+        #{NSyzw},#{CHkgs},#{DCfsj},#{DDdsj},#{NJg},#{NZwzs})
+    </insert>
 </mapper>

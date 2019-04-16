@@ -11,4 +11,5 @@ public interface TicketDao {
     List<Ticket> selectAllByTj(@Param("cfd") String cfd,@Param("mdd") String mdd,@Param("rq")String rq);
     List<Ticket> selectAllByZhongLei(@Param("id")String id);
     int deleteTicketByid(@Param("id")String id);
+    int insertOneTicket(Ticket ticket);
 }
