@@ -1,0 +1,196 @@
+#div-1{
+	width:1263px ;
+	position: relative;
+	margin: auto;
+}
+
+#div-2{
+	width: 100%;
+	position: relative;
+	height: 40px;
+	background: #282e2f;
+}
+
+#div-2-1{
+	position: relative;
+	display: inline-block;
+	width: 240px;
+	height: 40px;
+	color: white;
+	margin-top: 10px;
+	margin-left: 1090px;
+	font-size: 15px;
+}
+.a1{
+	color: white;
+}
+.a1:link{
+	color: white;
+	text-decoration: none;
+}
+.a1:hover{
+	color: white;
+	text-decoration: underline;
+}
+
+#div-3{
+	width: 100%;
+	position: relative;
+	margin: auto;
+/*	margin-top: 20px;*/
+}
+
+#div-3-1{
+	width: 15%;
+	position: relative;
+	display: inline-block;
+	background: #1a2224;
+	height: 550px;
+	text-align: center;
+	float: left;
+}
+
+#div-3-1-2{
+	width: 100%;
+	position: relative;
+	margin-top: 5px;
+}
+
+button{
+	width: 186px;
+	height: 50px;
+	margin-left: 3px;
+	border-radius: 0px;
+	background-color:#1a2224;
+	color: #e5e9eb;
+	font-size: 15px;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+	position: relative;
+
+}
+
+button:hover{
+	background-color:#e5e9eb;
+	color: #1a2224;
+}
+
+.button1{
+	background-color:#e5e9eb;
+	color: #1a2224;
+}
+
+#div-3-2{
+	width: 85%;
+	position: relative;
+	display: inline-block;
+	background: #e5e9eb;
+	height: 550px;
+	text-align: center;
+	float: left;
+}
+
+h3{
+	font-size: 24px;
+	color: #1a2224;
+}
+#div-3-2-2{
+	width: 100%;
+	font-size: 16px;
+	text-align: center;
+	border-collapse: collapse;
+
+	position: relative;
+	margin-top: 25px;
+	padding-top: 25px;
+}
+#div-3-2 .table01{
+	width: 90%;
+
+	font-size: 16px;
+	text-align: center;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+#div-3-2 .table01 tr{
+/*	border-bottom: 1px solid #1a2224;*/
+	border: 1px solid #666666;
+	line-height: 40px;
+}
+
+#div-3-2 .table01 .reserve {
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 4px;
+	background-color: #f60;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#div-3-2-1{
+	width: 90%;
+	font-size: 16px;
+	text-align: center;
+	border-collapse: collapse;
+	margin: auto;
+	position: relative;
+}
+
+#div-3-2-1 .form {
+	font-size: 16px;
+	
+}
+
+#div-3-2-1 .form p {
+	line-height: 3;
+	font-weight: bold;
+	margin-top: -5px;
+}
+
+#div-3-2-1 .form input {
+	width: 200px;
+	height: 20px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 5px;
+	font-size: 16px;
+	color: #666;
+	margin: 0 0 0 0px;
+}
+
+#div-3-2-1 .left {
+	width: 32%;
+	display: inline-block;
+}
+
+#div-3-2-1 .middle {
+	width: 32%;
+	display: inline-block;
+}
+
+#div-3-2-1 .right {
+	width: 32%;
+	display: inline-block;
+}
+
+#div-3-2-1 .button2 {
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 4px;
+	background-color: #f60;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	float: right;
+	margin-right: 30px;
+}
+
