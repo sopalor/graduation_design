@@ -37,7 +37,7 @@
 								<p> <label for="mdd">返回城市</label><!--<br/>--> <input type="text" name="mdd" id="mdd" placeholder="城市名"> </p>
 						</div>
 						<div class="form right">
-								<p> <label for="rq">出发日期</label><!--<br/>--> <input type="text" name="rq" id="rq" placeholder="日期"> </p>
+								<p> <label for="rq">出发日期</label><!--<br/>--> <input type="date" name="rq" id="rq" placeholder="日期"> </p>
 						</div>
 					
 				</div>
@@ -47,10 +47,10 @@
 								<p> <label for="hkgs">航 班 号</label><!--<br/>--> <input type="text" name="hkgs" id="hkgs" placeholder="航班号"> </p>
 						</div>
 						<div class="form right">
-								<p> <label for="cfsj">出发时间</label><!--<br/>--> <input type="text" name="cfsj" id="cfsj" placeholder="出发时间"> </p>
+								<p> <label for="cfsj">出发时间</label><!--<br/>--> <input type="datetime-local" name="cfsj" id="cfsj" placeholder="出发时间"> </p>
 						</div>
 						<div class="form right">
-								<p> <label for="ddsj">到达时间</label><!--<br/>--> <input type="text" name="ddsj" id="ddsj" placeholder="到达时间"> </p>
+								<p> <label for="ddsj">到达时间</label><!--<br/>--> <input type="datetime-local" name="ddsj" id="ddsj" placeholder="到达时间"> </p>
 						</div>
 					
 				</div>

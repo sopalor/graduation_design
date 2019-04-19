@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static com.oracle.jrockit.jfr.ContentType.Timestamp;
+
 
 @Controller
 @RequestMapping("admin")
@@ -50,7 +50,7 @@ public class AdminController {
     }
     @RequestMapping(value = "addticket")
     public String addticket(HttpServletRequest req){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         SimpleDateFormat newsdf = new SimpleDateFormat("yyyy-MM-dd");
         String cfd=req.getParameter("cfd");
         String mdd=req.getParameter("mdd");
