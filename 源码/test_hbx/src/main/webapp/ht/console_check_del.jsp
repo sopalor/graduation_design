@@ -22,6 +22,7 @@
 			<div id="div-3">
 				<div id="div-3-1">
 					<div id="div-3-1-2"><button type="button" class="button1"  id="init">机票查询\删除</button></div>
+					<div id="div-3-1-2"><button type="button">机票修改</button></div>
 					<div id="div-3-1-2"><button type="button" id="add_ticket">机票添加</button></div>
 				</div>
 				<div id="div-3-2">
@@ -57,6 +58,7 @@
 							<td>价格</td>
 							<td>座位数</td>
 							<td>删除</td>
+							<td>修改</td>
 						</tr>
 						<c:forEach var="item"   items="${requestScope.list}"   varStatus="status"  >
 							<tr>
@@ -69,6 +71,7 @@
 								<td class="price">¥${item.NJg}</td>
 								<td>${item.NZwzs}</td>
 									<td><a href="../admin/deleteticket?id=${item.CId}" class="reserve">删除</a></td>
+								<td><a href="###" class="reserve">修改</a></td>
 							</tr>
 						</c:forEach>
 					</table>

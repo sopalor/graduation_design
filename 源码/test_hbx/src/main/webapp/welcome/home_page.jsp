@@ -59,7 +59,7 @@
 							</div>
 						</form>
 						<div class="new">
-							<h2>最新机票</h2>
+							<h2 ><button type="submit" class="button3">最新机票</button><button type="submit" class="button4">折扣机票</button></h2>
 							
 							<table>
 								<thead>

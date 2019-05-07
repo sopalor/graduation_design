@@ -23,6 +23,7 @@
 			<div id="div-3">
 				<div id="div-3-1">
 					<div id="div-3-1-2"><button type="button" class="button1" id="init">机票查询\删除</button></div>
+					<div id="div-3-1-2"><button type="button">机票修改</button></div>
 					<div id="div-3-1-2"><button type="button"  id="add_ticket">机票添加</button></div>
 				</div>
 				<div id="div-3-2">
@@ -55,12 +56,15 @@
 					
 				</div>
 				<div id="div-3-2-1">
-						<div class="form right" style="margin-left: -312px;">
+						<div class="form right" >
 								<p> <label for="sit">座 位 数</label>&nbsp;<input type="text" name="sit" id="sit" placeholder="座位数"> </p>
 						</div>
 						<div class="form right">
 								<p> <label for="jg">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</label>&nbsp;<input type="text" name="jg" id="jg" placeholder="价格"> </p>
 						</div>
+					<div class="form right">
+						<p> <label for="from_date">折&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扣</label>&nbsp;<input type="text" name="from_date" id="from_date" placeholder="折扣"> </p>
+					</div>
 				</div>
 				<div class="form button">
 					 <button type="submit" class="button2">添加</button> 
