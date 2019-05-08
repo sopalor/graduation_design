@@ -11,6 +11,8 @@
 		<title></title>
 		<script src="./welcome/js/jquery-1.4.2.min.js"></script>
 		<script src="./welcome/js/home_page.js"></script>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
 		<link rel="stylesheet" href="welcome/css/home_page.css" />
 		<link rel="stylesheet" href="welcome/css/user_login.css" />
 
@@ -46,7 +48,7 @@
 
 							<div class="form left">
 								<p> <label for="cfd">出发城市</label><!--<br/>-->
-									<SELECT  name="cfd" id="cfd" >
+									<SELECT  name="cfd" id="cfd" class="form-control" >
 										<c:forEach var="item"   items="${requestScope.cfdlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>
@@ -57,7 +59,7 @@
 							</div>
 							<div class="form middle">
 								<p> <label for="mdd">返回城市</label><!--<br/>-->
-									<SELECT  name="mdd" id="mdd" >
+									<SELECT  name="mdd" id="mdd"  class="form-control">
 										<c:forEach var="item"   items="${requestScope.mddlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>
@@ -68,7 +70,7 @@
 							</div>
 							<div class="form right">
 								<p> <label for="rq">出发时间</label><!--<br/>-->
-									<SELECT  name="rq" id="rq" >
+									<SELECT  name="rq" id="rq" class="form-control">
 										<c:forEach var="item"   items="${requestScope.rqlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>

@@ -12,7 +12,7 @@
 		<div id="div01-1">
 		    <div id="search">
 					<div class="center">
-						<figcaption>管理员登录<font class="change">/<a href="user_login.jsp" class="a1">用户登录</a></font></figcaption>
+						<figcaption>管理员登录<font class="change"></font></figcaption>
 
 					    	<table class="table">
 					    		<tr>

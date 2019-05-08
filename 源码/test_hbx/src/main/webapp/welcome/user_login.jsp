@@ -21,7 +21,7 @@
 <div id="div01-1">
     <div id="search">
         <div class="center">
-            <figcaption>用户登录<font class="change">/<a href="./ad_login.jsp" class="a1">管理员登录</a></font></figcaption>
+            <figcaption>用户登录<font class="change"></font></figcaption>
 
 
             <table class="table">

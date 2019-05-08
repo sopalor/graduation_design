@@ -11,6 +11,7 @@
 		<base href="<%=basePath%>">
 		<link rel="stylesheet" href="ht/css/console_check_del.css" />
 		<script src="./ht/js/jquery-1.4.2.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" >
 		<script src="./ht/js/console.js"></script>
 
 	</head>
@@ -31,7 +32,7 @@
 						<form action="./admin/TiaoJian">
 						<div class="form left">
 							<p> <label for="cfd">出发城市</label><!--<br/>-->
-								<SELECT  name="cfd" id="cfd" >
+								<SELECT  name="cfd" id="cfd" class="form-control">
 									<c:forEach var="item"   items="${requestScope.cfdlist}"   varStatus="status"  >
 									<option value="${item}">${item} </option>
 									</c:forEach>
@@ -42,7 +43,7 @@
 							</div>
 							<div class="form middle">
 								<p> <label for="mdd">返回城市</label><!--<br/>-->
-									<SELECT  name="mdd" id="mdd" >
+									<SELECT  name="mdd" id="mdd" class="form-control">
 										<c:forEach var="item"   items="${requestScope.mddlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>
@@ -53,7 +54,7 @@
 							</div>
 							<div class="form right">
 								<p> <label for="rq">出发时间</label><!--<br/>-->
-									<SELECT  name="rq" id="rq" >
+									<SELECT  name="rq" id="rq" class="form-control">
 										<c:forEach var="item"   items="${requestScope.rqlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>

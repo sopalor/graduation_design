@@ -13,7 +13,7 @@
 		<div id="div01-1">
 		    <div id="search">
 					<div class="center">
-						<figcaption>用户注册<font class="change">/<a href="ad_registration.jsp" class="a1">管理员注册</a></font></figcaption>
+						<figcaption>用户注册<font class="change"></a></font></figcaption>
 						
 					    
 					    	<table class="table">

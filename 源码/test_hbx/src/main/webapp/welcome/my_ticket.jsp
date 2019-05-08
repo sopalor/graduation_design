@@ -9,9 +9,11 @@
 		<base href="<%=basePath%>">
 		<meta charset="UTF-8">
 		<title></title>
+
 		<link rel="stylesheet" href="welcome/css/home_page.css" />
 		<link rel="stylesheet" href="welcome/css/user login.css" />
 		<link rel="stylesheet" href="welcome/css/my_ticket.css" />
+
 	</head>
 	<body>
 		<div id="div01-1">
@@ -60,7 +62,7 @@
 											<td>${item.TTicket.CCfd}-${item.TTicket.CMdd}</td>
 											<td>${item.TTicket.DRq}</td>
 											<td class="price">¥${item.TTicket.FZk}<font style="text-decoration: line-through;font-size:12px;color: #666666;" class="discount">¥${item.TTicket.NJg}</font></td>
-											<td>${item.TTicket.DCfsj}</td>
+									 		<td>${item.TTicket.DCfsj}</td>
 											<td>${item.TTicket.DDdsj}</td>
 											<td>${item.TTicket.CHkgs}</td>
 											<td>
