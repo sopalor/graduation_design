@@ -1,19 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-	<head>
-		<%
-			String path = request.getContextPath();
-			String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-		%>
-		<base href="<%=basePath%>">
-		<meta charset="UTF-8">
-		<title></title>
+<head>
+	<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	%>
+	<base href="<%=basePath%>">
+	<meta charset="UTF-8">
+	<title></title>
 		<script src="./welcome/js/jquery-1.4.2.min.js"></script>
 		<script src="./welcome/js/home_page.js"></script>
-		<link rel="stylesheet" href="welcome/css/home_page.css" />
-		<link rel="stylesheet" href="welcome/css/user_login.css" />
-
+		<link rel="stylesheet" href="./welcome/css/home_page.css" />
+		<link rel="stylesheet" href="./welcome/css/user login.css" />
+		<link rel="stylesheet" href="./welcome/css/home_page_discount.css" />
 	</head>
 	<body>
 		<div id="div01-1">
@@ -41,7 +41,7 @@
 				<div id="container"> 
 						
 					<div class="ticket">
-						<form action="./ticket/TiaoJian">
+						<form action="./ticket/TiaoJian_discount">
 							<h2>机票预定</h2>
 
 							<div class="form left">
@@ -61,7 +61,7 @@
 										<c:forEach var="item"   items="${requestScope.mddlist}"   varStatus="status"  >
 											<option value="${item}">${item} </option>
 										</c:forEach>
-										<option value="">任意</option>
+											<option value="">任意</option>
 									</SELECT>
 
 								</p>
@@ -82,8 +82,8 @@
 							</div>
 						</form>
 						<div class="new">
-							<h2 ><button type="submit" class="button3" id="thenew">最新机票</button><button  class="button4" id="discount1">折扣机票</button></h2>
-							
+							<h2 ><font class="button4" id="thenew">最新机票</font><font class="button3" id="discount">折扣机票</font></h2>
+
 							<table>
 								<thead>
 									<tr>
@@ -97,19 +97,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="item"   items="${requestScope.list}"   varStatus="status"  >
-										<tr>
-											<td>${item.CCfd}-${item.CMdd}</td>
-											<td>${item.DRq}</td>
-											<td class="price">¥${item.NJg}</td>
-											<td>${item.DCfsj}</td>
-											<td>${item.DDdsj}</td>
-											<td>${item.CHkgs}</td>
-											<td>
-												<a href="../ticket/yuding?id=${item.CId}" class="reserve">预定</a>
-											</td>
-										</tr>
-									</c:forEach>
+								<c:forEach var="item"   items="${requestScope.list}"   varStatus="status"  >
+									<tr>
+										<td>${item.CCfd}-${item.CMdd}</td>
+										<td>${item.DRq}</td>
+										<td class="price">¥${item.FZk}<font class="discount">¥${item.NJg}</font></td>
+										<td>${item.DCfsj}</td>
+										<td>${item.DDdsj}</td>
+										<td>${item.CHkgs}</td>
+										<td>
+											<a href="../ticket/yuding?id=${item.CId}" class="reserve">预定</a>
+										</td>
+									</tr>
+								</c:forEach>
 
 								</tbody>
 								

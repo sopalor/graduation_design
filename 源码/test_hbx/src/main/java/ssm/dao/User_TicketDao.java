@@ -14,4 +14,5 @@ public interface User_TicketDao {
     int insertOneTicket(@Param("uid")String uid,@Param("tid") String tid,@Param("sit")Integer sit);
     List<Integer> selectSitList(@Param("id")String id);
     int deleteOneTicket(@Param("id")String id);
+    int deleteAllTicket(@Param("id")String id);
 }

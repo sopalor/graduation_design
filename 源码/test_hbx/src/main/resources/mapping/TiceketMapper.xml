@@ -12,8 +12,12 @@
         <result column="d_ddsj" property="DDdsj" jdbcType="DATE"/>
         <result column="n_jg" property="NJg" jdbcType="VARCHAR"/>
         <result column="n_zwzs" property="NZwzs" jdbcType="INTEGER"/>
+        <result column="f_zk" property="FZk" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="selectAll" resultMap="TicketBaseMap">
+        select * from t_ticket where f_zk=1
+    </select>
+    <select id="selectAll1" resultMap="TicketBaseMap">
         select * from t_ticket
     </select>
     <select id="selectAllByTj" resultMap="TicketBaseMap">
@@ -29,6 +33,32 @@
         </if>
     </where>
     </select>
+    <select id="selectAllByTj1" resultMap="TicketBaseMap">
+        select * from t_ticket <where>f_zk=1
+        <if test="cfd !=null and cfd !=''">
+            and  c_cfd=#{cfd}
+        </if>
+        <if test="mdd !=null and mdd !=''">
+            and   c_mdd=#{mdd}
+        </if>
+        <if test="rq !=null and rq !=''">
+            and  Date(d_rq)=#{rq}
+        </if>
+    </where>
+    </select>
+    <select id="selectAllByTj2" resultMap="TicketBaseMap">
+        select * from t_ticket <where>f_zk!=1
+        <if test="cfd !=null and cfd !=''">
+            and  c_cfd=#{cfd}
+        </if>
+        <if test="mdd !=null and mdd !=''">
+            and   c_mdd=#{mdd}
+        </if>
+        <if test="rq !=null and rq !=''">
+            and  Date(d_rq)=#{rq}
+        </if>
+    </where>
+    </select>
     <select id="selectAllByZhongLei" resultMap="TicketBaseMap">
         select * from t_ticket  t
         where t.c_cfd in (select c_cfd from t_ticket where c_id=#{id})
@@ -39,6 +69,43 @@
     </delete>
     <insert id="insertOneTicket" parameterType="ssm.model.Ticket">
         insert into t_ticket values(#{CId},#{CCfd},#{CMdd},#{DRq},
-        #{NSyzw},#{CHkgs},#{DCfsj},#{DDdsj},#{NJg},#{NZwzs})
+        #{NSyzw},#{CHkgs},#{DCfsj},#{DDdsj},#{NJg},#{NZwzs},#{FZk})
     </insert>
+    <select id="selectAllDiscount" resultMap="TicketBaseMap">
+        select * from t_ticket where f_zk!= 1
+    </select>
+    <select id="selectAllById" resultMap="TicketBaseMap">
+        select * from t_ticket where c_id=#{id}
+    </select>
+    <update id="updateOneTicket" parameterType="ssm.model.Ticket">
+        update t_ticket set c_cfd=#{CCfd},c_mdd=#{CMdd},d_rq=#{DRq},n_syzw=#{NSyzw},c_hkgs=#{CHkgs},d_cfsj=#{DCfsj},d_ddsj=#{DDdsj},n_jg=#{NJg},n_zwzs=#{NZwzs},f_zk=#{FZk}
+        where c_id=#{CId}
+    </update>
+    <select id="selectCfdList" resultType="STRING">
+        select distinct c_cfd from t_ticket
+    </select>
+    <select id="selectMddList" resultType="STRING">
+        select distinct c_mdd from t_ticket
+    </select>
+    <select id="selectRqList" resultType="STRING">
+        select distinct d_rq from t_ticket
+    </select>
+    <select id="selectCfdList1" resultType="STRING">
+        select distinct c_cfd from t_ticket where f_zk=1
+    </select>
+    <select id="selectMddList1" resultType="STRING">
+        select distinct c_mdd from t_ticket where f_zk=1
+    </select>
+    <select id="selectRqList1" resultType="STRING">
+        select distinct d_rq from t_ticket where f_zk=1
+    </select>
+    <select id="selectCfdList2" resultType="STRING">
+        select distinct c_cfd from t_ticket where f_zk!=1
+    </select>
+    <select id="selectMddList2" resultType="STRING">
+        select distinct c_mdd from t_ticket where f_zk!=1
+    </select>
+    <select id="selectRqList2" resultType="STRING">
+        select distinct d_rq from t_ticket where f_zk!=1
+    </select>
 </mapper>

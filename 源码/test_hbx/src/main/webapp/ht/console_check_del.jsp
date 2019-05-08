@@ -17,7 +17,7 @@
 	<body>
 		<div id="div-1">
 			<div id="div-2">
-					<div id="div-2-1">欢迎,超级管理员，<a href="" class="a1">退出</a></div>
+					<div id="div-2-1">欢迎,超级管理员。<a href="" class="a1">退出</a></div>
 			</div>
 			<div id="div-3">
 				<div id="div-3-1">
@@ -30,14 +30,36 @@
 					<div id="div-3-2-1">
 						<form action="./admin/TiaoJian">
 						<div class="form left">
-							<p> <label for="cfd">出发城市</label><!--<br/>--> <input type="text" name="cfd" id="cfd" placeholder="城市名"> </p>
+							<p> <label for="cfd">出发城市</label><!--<br/>-->
+								<SELECT  name="cfd" id="cfd" >
+									<c:forEach var="item"   items="${requestScope.cfdlist}"   varStatus="status"  >
+									<option value="${item}">${item} </option>
+									</c:forEach>
+									<option value="">任意</option>
+							</SELECT>
+								</SELECT>  </p>
 								
 							</div>
 							<div class="form middle">
-								<p> <label for="mdd">返回城市</label><!--<br/>--> <input type="text" name="mdd" id="mdd" placeholder="城市名"> </p>
+								<p> <label for="mdd">返回城市</label><!--<br/>-->
+									<SELECT  name="mdd" id="mdd" >
+										<c:forEach var="item"   items="${requestScope.mddlist}"   varStatus="status"  >
+											<option value="${item}">${item} </option>
+										</c:forEach>
+										<option value="">任意</option>
+									</SELECT>
+
+								</p>
 							</div>
 							<div class="form right">
-								<p> <label for="rq">出发时间</label><!--<br/>--> <input type="text" name="rq" id="rq" placeholder="时间/日期"> </p>
+								<p> <label for="rq">出发时间</label><!--<br/>-->
+									<SELECT  name="rq" id="rq" >
+										<c:forEach var="item"   items="${requestScope.rqlist}"   varStatus="status"  >
+											<option value="${item}">${item} </option>
+										</c:forEach>
+										<option value="">任意</option>
+									</SELECT>
+								</p>
 								
 							</div>
 							<br />
@@ -71,7 +93,7 @@
 								<td class="price">¥${item.NJg}</td>
 								<td>${item.NZwzs}</td>
 									<td><a href="../admin/deleteticket?id=${item.CId}" class="reserve">删除</a></td>
-								<td><a href="###" class="reserve">修改</a></td>
+								<td><a href="../admin/changeticket?id=${item.CId}" class="reserve">修改</a></td>
 							</tr>
 						</c:forEach>
 					</table>

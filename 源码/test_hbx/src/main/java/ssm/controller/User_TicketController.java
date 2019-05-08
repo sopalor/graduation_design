@@ -11,6 +11,7 @@ import ssm.model.User;
 import ssm.model.User_Ticket;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.List;
 @Controller
 @RequestMapping("user_ticket")
@@ -23,6 +24,11 @@ public class User_TicketController {
     public String myticket(HttpServletRequest req){
         List<User_Ticket> list=user_ticketDao.selectAllMyTickets(req.getParameter("id"));
         req.setAttribute("list",list);
+        for(User_Ticket user_ticket:list){
+            Ticket ticket=user_ticket.getTTicket();
+            ticket.setFZk(ticket.getNJg().multiply(ticket.getFZk()));
+            ticket.setFZk(ticket.getFZk().setScale(1, BigDecimal.ROUND_HALF_UP));
+        }
         return "welcome/my_ticket.jsp";
     }
     @RequestMapping(value = "ticketinfo")

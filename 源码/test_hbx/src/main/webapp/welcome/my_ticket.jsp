@@ -59,7 +59,7 @@
 										<tr>
 											<td>${item.TTicket.CCfd}-${item.TTicket.CMdd}</td>
 											<td>${item.TTicket.DRq}</td>
-											<td class="price">¥${item.TTicket.NJg}</td>
+											<td class="price">¥${item.TTicket.FZk}<font style="text-decoration: line-through;font-size:12px;color: #666666;" class="discount">¥${item.TTicket.NJg}</font></td>
 											<td>${item.TTicket.DCfsj}</td>
 											<td>${item.TTicket.DDdsj}</td>
 											<td>${item.TTicket.CHkgs}</td>

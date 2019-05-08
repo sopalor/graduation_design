@@ -15,6 +15,15 @@ public class Ticket {
     private Timestamp DDdsj;
     private BigDecimal  NJg;
     private Integer NZwzs;
+    private BigDecimal FZk;
+
+    public BigDecimal getFZk() {
+        return FZk;
+    }
+
+    public void setFZk(BigDecimal FZk) {
+        this.FZk = FZk;
+    }
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ssm.dao.TicketDao;
 import ssm.dao.UserDao;
+import ssm.dao.User_TicketDao;
 import ssm.model.Ticket;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +26,15 @@ public class AdminController {
     TicketDao ticketDao;
     @Autowired
     UserDao userdao;
+    @Autowired
+    User_TicketDao user_ticketDao;
     @RequestMapping(value = "init")
     public String firstInit(HttpServletRequest req){
-        List<Ticket> list=ticketDao.selectAll();
-        String str=userdao.selectNicknameById(req.getParameter("id"));
+        List<Ticket> list=ticketDao.selectAll1();
         req.setAttribute("list",list);
+        req.setAttribute("cfdlist",ticketDao.selectCfdList());
+        req.setAttribute("mddlist",ticketDao.selectMddList());
+        req.setAttribute("rqlist",ticketDao.selectRqList());
         return "ht/console_check_del.jsp";
     }
     @RequestMapping(value = "TiaoJian")
@@ -39,12 +44,16 @@ public class AdminController {
         String rq=req.getParameter("rq");
         List<Ticket> list=ticketDao.selectAllByTj(cfd,mdd,rq);
         req.setAttribute("list",list);
+        req.setAttribute("cfdlist",ticketDao.selectCfdList());
+        req.setAttribute("mddlist",ticketDao.selectMddList());
+        req.setAttribute("rqlist",ticketDao.selectRqList());
         return "ht/console_check_del.jsp";
     }
     @RequestMapping(value = "deleteticket")
     public String deleteticket(HttpServletRequest req){
         String id=req.getParameter("id");
-       int count=ticketDao.deleteTicketByid(id);
+        int count=ticketDao.deleteTicketByid(id);
+        user_ticketDao.deleteOneTicket(id);
         req.setAttribute("list",count);
         return "admin/init";
     }
@@ -60,6 +69,7 @@ public class AdminController {
         String ddsj=req.getParameter("ddsj");
         String sit=req.getParameter("sit");
         String jg=req.getParameter("jg");
+        String zk=req.getParameter("zk");
         Ticket ticket=new Ticket();
         ticket.setCCfd(cfd);
         ticket.setCHkgs(hkgs);
@@ -88,7 +98,30 @@ public class AdminController {
         ticket.setNJg(new BigDecimal(jg));
         ticket.setNSyzw(Integer.parseInt(sit));
         ticket.setNZwzs(Integer.parseInt(sit));
-        ticketDao.insertOneTicket(ticket);
+        ticket.setFZk(new BigDecimal(zk));
+        String cha=req.getParameter("flag");
+        if(cha!=null&&cha.equals("yes")){
+            ticket.setCId(req.getParameter("id"));
+            ticketDao.updateOneTicket(ticket);
+
+        }
+        else
+            ticketDao.insertOneTicket(ticket);
         return "admin/init";
+    }
+    @RequestMapping(value = "changeticket")
+    public String changeticket(HttpServletRequest req){
+        String id=req.getParameter("id");
+        Ticket ticket=ticketDao.selectAllById(id);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date date=ticket.getDCfsj();
+        String dstr=sdf.format(date);
+        req.setAttribute("str",dstr);
+        date=ticket.getDDdsj();
+        String dstr1=sdf.format(date);
+        req.setAttribute("str1",dstr1);
+        req.setAttribute("change","yes");
+        req.setAttribute("ticket",ticket);
+        return "ht/console_change.jsp";
     }
 }

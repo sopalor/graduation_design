@@ -12,6 +12,7 @@
         <result column="d_ddsj" property="DDdsj" jdbcType="DATE"/>
         <result column="n_jg" property="NJg" jdbcType="VARCHAR"/>
         <result column="n_zwzs" property="NZwzs" jdbcType="INTEGER"/>
+        <result column="f_zk" property="FZk" jdbcType="VARCHAR"/>
     </resultMap>
     <resultMap id="UserBaseMap" type="ssm.model.User">
         <id column="uid" property="CId" jdbcType="VARCHAR"/>
@@ -71,5 +72,8 @@
     </select>
     <delete id="deleteOneTicket">
         delete from t_user_ticket where c_id=#{id}
+    </delete>
+    <delete id="deleteAllTicket">
+        delete from t_user_ticket where t_id=#{id}
     </delete>
 </mapper>

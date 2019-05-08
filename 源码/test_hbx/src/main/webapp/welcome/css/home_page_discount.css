@@ -1,0 +1,5 @@
+#container .ticket .discount{
+	text-decoration: line-through;
+	font-size:12px;
+	color: #666666;
+}
