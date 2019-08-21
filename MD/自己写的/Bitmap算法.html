@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>Evernote Export</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600475 (zh-CN, DDL); Windows/10.0.0 (Win64);"/>
+  <meta name="content-class" content="yinxiang.markdown"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="498"/>
+
+<div><span><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><h4 style="line-height: 160%; box-sizing: content-box; font-size: 20px; color: #333;">Bitmap算法</h4>
+<hr style="line-height: 160%; box-sizing: content-box; border-top: 1px solid #eee; margin: 16px 0;"/>
+<h6 style="line-height: 160%; box-sizing: content-box; font-size: 13px; color: #333;">问题背景</h6>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">数据库存储了一张人员表。<br/>
+<img src="Bitmap算法_files/Image.png" type="image/png" data-filename="Image.png"/></p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">现在要对信息进行统计：</p>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">统计试用黑鲨的人</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">统计试用iPhone的人</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">统计是程序员的人</li>
+</ul>
+<h6 style="line-height: 160%; box-sizing: content-box; font-size: 13px; color: #333;">系统试用很久之后（很多版本的迭代）</h6>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;"><img src="Bitmap算法_files/Image [1].png" type="image/png" data-filename="Image.png"/></p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">现在要对信息进行统计：</p>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">统计试用iPhone，有女朋友，有男朋友，出生地在南京，不是党员。。。。。。。的人</li>
+</ul>
+<h5 style="line-height: 160%; box-sizing: content-box; font-weight: 700; font-size: 16px; color: #333;">经过多个版本的迭代。数据库的字段越来越多。sql语句越来越长。阅读性很差</h5>
+<hr style="line-height: 160%; box-sizing: content-box; border-top: 1px solid #eee; margin: 16px 0;"/>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">为了解决此问题，引入了bitmap的算法。</p>
+<h4 style="line-height: 160%; box-sizing: content-box; font-size: 20px; color: #333;">为了解决的问题：</h4>
+<ul style="line-height: 160%; box-sizing: content-box; display: block; list-style-type: disc; padding-left: 30px; margin: 6px 0 10px; color: #333;">
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">节约存储空间，常用的存储方式一般是一个list的实体类，或者是list的map。空间损耗太大。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">去重，在数据量重复的情况下对数据进行去重是十分影响数据库运行的一种方法。可以回忆一下。</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">一旦修改一个条件需要重新进行一次数据库io</li>
+<li style="line-height: 160%; box-sizing: content-box; position: relative;">等等！！！</li>
+</ul>
+<h4 style="line-height: 160%; box-sizing: content-box; font-size: 20px; color: #333;">思路</h4>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">我们可以颠覆传统的存储方式，以行为列，以列为行。。。。不在存在人而去存储条件。。</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;"><img src="Bitmap算法_files/Image [2].png" type="image/png" data-filename="Image.png"/></p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">假设以上人物的c_id为主键，我现在要存储使用iphone的人。。<br/>
+<img src="Bitmap算法_files/Image [3].png" type="image/png" data-filename="Image.png"/><br/>
+是程序员的人<br/>
+<img src="Bitmap算法_files/Image [4].png" type="image/png" data-filename="Image.png"/><br/>
+那么如果即时程序员又是使用iphone的人呢</p>
+<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;"><img src="Bitmap算法_files/Image [5].png" type="image/png" data-filename="Image.png"/><br/>
+那如果是其他的业务做起来的得心应手，因为这个存储是真tm的小，计算机而言。传统的键值对的list&lt;map&gt;的形式一条记录就将近好几B。。但是这个。。一个位就能存一个数据。。。很可怕、、什么概念100W的数据量不到1M。。但是也有缺陷，他一般适用于是否存储。。如果可能性过多的话。存储的组会变多。</p>
+</div><center style="display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden">%23%23%23%23%20Bitmap%E7%AE%97%E6%B3%95%0A---%0A%0A%23%23%23%23%23%23%20%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF%0A%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E4%BA%86%E4%B8%80%E5%BC%A0%E4%BA%BA%E5%91%98%E8%A1%A8%E3%80%82%0A!%5B3aa340b8ea7c7777d7aceb2c4cd62f88.png%5D(en-resource%3A%2F%2Fdatabase%2F500%3A1)%0A%0A%E7%8E%B0%E5%9C%A8%E8%A6%81%E5%AF%B9%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E7%BB%9F%E8%AE%A1%EF%BC%9A%0A*%20%E7%BB%9F%E8%AE%A1%E8%AF%95%E7%94%A8%E9%BB%91%E9%B2%A8%E7%9A%84%E4%BA%BA%0A*%20%E7%BB%9F%E8%AE%A1%E8%AF%95%E7%94%A8iPhone%E7%9A%84%E4%BA%BA%0A*%20%E7%BB%9F%E8%AE%A1%E6%98%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E4%BA%BA%0A%0A%0A%23%23%23%23%23%23%20%E7%B3%BB%E7%BB%9F%E8%AF%95%E7%94%A8%E5%BE%88%E4%B9%85%E4%B9%8B%E5%90%8E%EF%BC%88%E5%BE%88%E5%A4%9A%E7%89%88%E6%9C%AC%E7%9A%84%E8%BF%AD%E4%BB%A3%EF%BC%89%0A!%5B6ef3dc04b706f8a7bb06c893b19f5dae.png%5D(en-resource%3A%2F%2Fdatabase%2F502%3A1)%0A%0A%E7%8E%B0%E5%9C%A8%E8%A6%81%E5%AF%B9%E4%BF%A1%E6%81%AF%E8%BF%9B%E8%A1%8C%E7%BB%9F%E8%AE%A1%EF%BC%9A%0A*%20%E7%BB%9F%E8%AE%A1%E8%AF%95%E7%94%A8iPhone%EF%BC%8C%E6%9C%89%E5%A5%B3%E6%9C%8B%E5%8F%8B%EF%BC%8C%E6%9C%89%E7%94%B7%E6%9C%8B%E5%8F%8B%EF%BC%8C%E5%87%BA%E7%94%9F%E5%9C%B0%E5%9C%A8%E5%8D%97%E4%BA%AC%EF%BC%8C%E4%B8%8D%E6%98%AF%E5%85%9A%E5%91%98%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E7%9A%84%E4%BA%BA%0A%0A%23%23%23%23%23%20%E7%BB%8F%E8%BF%87%E5%A4%9A%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E8%BF%AD%E4%BB%A3%E3%80%82%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%97%E6%AE%B5%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E3%80%82sql%E8%AF%AD%E5%8F%A5%E8%B6%8A%E6%9D%A5%E8%B6%8A%E9%95%BF%E3%80%82%E9%98%85%E8%AF%BB%E6%80%A7%E5%BE%88%E5%B7%AE%0A---%0A%E4%B8%BA%E4%BA%86%E8%A7%A3%E5%86%B3%E6%AD%A4%E9%97%AE%E9%A2%98%EF%BC%8C%E5%BC%95%E5%85%A5%E4%BA%86bitmap%E7%9A%84%E7%AE%97%E6%B3%95%E3%80%82%0A%23%23%23%23%20%E4%B8%BA%E4%BA%86%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A%0A*%20%20%E8%8A%82%E7%BA%A6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%E4%B8%80%E8%88%AC%E6%98%AF%E4%B8%80%E4%B8%AAlist%E7%9A%84%E5%AE%9E%E4%BD%93%E7%B1%BB%EF%BC%8C%E6%88%96%E8%80%85%E6%98%AFlist%E7%9A%84map%E3%80%82%E7%A9%BA%E9%97%B4%E6%8D%9F%E8%80%97%E5%A4%AA%E5%A4%A7%E3%80%82%0A*%20%20%E5%8E%BB%E9%87%8D%EF%BC%8C%E5%9C%A8%E6%95%B0%E6%8D%AE%E9%87%8F%E9%87%8D%E5%A4%8D%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%AF%B9%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%8E%BB%E9%87%8D%E6%98%AF%E5%8D%81%E5%88%86%E5%BD%B1%E5%93%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E3%80%82%E5%8F%AF%E4%BB%A5%E5%9B%9E%E5%BF%86%E4%B8%80%E4%B8%8B%E3%80%82%0A*%20%20%E4%B8%80%E6%97%A6%E4%BF%AE%E6%94%B9%E4%B8%80%E4%B8%AA%E6%9D%A1%E4%BB%B6%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E8%BF%9B%E8%A1%8C%E4%B8%80%E6%AC%A1%E6%95%B0%E6%8D%AE%E5%BA%93io%0A*%20%20%E7%AD%89%E7%AD%89%EF%BC%81%EF%BC%81%EF%BC%81%0A%23%23%23%23%20%E6%80%9D%E8%B7%AF%0A%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E9%A2%A0%E8%A6%86%E4%BC%A0%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%EF%BC%8C%E4%BB%A5%E8%A1%8C%E4%B8%BA%E5%88%97%EF%BC%8C%E4%BB%A5%E5%88%97%E4%B8%BA%E8%A1%8C%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E4%B8%8D%E5%9C%A8%E5%AD%98%E5%9C%A8%E4%BA%BA%E8%80%8C%E5%8E%BB%E5%AD%98%E5%82%A8%E6%9D%A1%E4%BB%B6%E3%80%82%E3%80%82%0A%0A%0A!%5Bc285c886fde8ea17b59c2ea380150fdb.png%5D(en-resource%3A%2F%2Fdatabase%2F504%3A1)%0A%0A%E5%81%87%E8%AE%BE%E4%BB%A5%E4%B8%8A%E4%BA%BA%E7%89%A9%E7%9A%84c_id%E4%B8%BA%E4%B8%BB%E9%94%AE%EF%BC%8C%E6%88%91%E7%8E%B0%E5%9C%A8%E8%A6%81%E5%AD%98%E5%82%A8%E4%BD%BF%E7%94%A8iphone%E7%9A%84%E4%BA%BA%E3%80%82%E3%80%82%0A!%5B55b14501dde86e0d53555d61302ca68e.png%5D(en-resource%3A%2F%2Fdatabase%2F506%3A1)%0A%E6%98%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E4%BA%BA%0A!%5B356011437c849d11a2993132114b4b5c.png%5D(en-resource%3A%2F%2Fdatabase%2F508%3A1)%0A%E9%82%A3%E4%B9%88%E5%A6%82%E6%9E%9C%E5%8D%B3%E6%97%B6%E7%A8%8B%E5%BA%8F%E5%91%98%E5%8F%88%E6%98%AF%E4%BD%BF%E7%94%A8iphone%E7%9A%84%E4%BA%BA%E5%91%A2%0A%0A!%5Bbbb8db33480a6f2536a49a55158b9eca.png%5D(en-resource%3A%2F%2Fdatabase%2F518%3A0)%0A%E9%82%A3%E5%A6%82%E6%9E%9C%E6%98%AF%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%81%9A%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%BE%97%E5%BF%83%E5%BA%94%E6%89%8B%EF%BC%8C%E5%9B%A0%E4%B8%BA%E8%BF%99%E4%B8%AA%E5%AD%98%E5%82%A8%E6%98%AF%E7%9C%9Ftm%E7%9A%84%E5%B0%8F%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%8C%E8%A8%80%E3%80%82%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%94%AE%E5%80%BC%E5%AF%B9%E7%9A%84list%3Cmap%3E%E7%9A%84%E5%BD%A2%E5%BC%8F%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%E5%B0%B1%E5%B0%86%E8%BF%91%E5%A5%BD%E5%87%A0B%E3%80%82%E3%80%82%E4%BD%86%E6%98%AF%E8%BF%99%E4%B8%AA%E3%80%82%E3%80%82%E4%B8%80%E4%B8%AA%E4%BD%8D%E5%B0%B1%E8%83%BD%E5%AD%98%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E3%80%82%E3%80%82%E3%80%82%E5%BE%88%E5%8F%AF%E6%80%95%E3%80%81%E3%80%81%E4%BB%80%E4%B9%88%E6%A6%82%E5%BF%B5100W%E7%9A%84%E6%95%B0%E6%8D%AE%E9%87%8F%E4%B8%8D%E5%88%B01M%E3%80%82%E3%80%82%E4%BD%86%E6%98%AF%E4%B9%9F%E6%9C%89%E7%BC%BA%E9%99%B7%EF%BC%8C%E4%BB%96%E4%B8%80%E8%88%AC%E9%80%82%E7%94%A8%E4%BA%8E%E6%98%AF%E5%90%A6%E5%AD%98%E5%82%A8%E3%80%82%E3%80%82%E5%A6%82%E6%9E%9C%E5%8F%AF%E8%83%BD%E6%80%A7%E8%BF%87%E5%A4%9A%E7%9A%84%E8%AF%9D%E3%80%82%E5%AD%98%E5%82%A8%E7%9A%84%E7%BB%84%E4%BC%9A%E5%8F%98%E5%A4%9A%E3%80%82%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A</center></span>
+</div></body></html> 
