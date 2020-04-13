@@ -527,27 +527,49 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
+				/**
+				 * 这个方法在当前版本的spirng是没用任何代码的
+				 * 可能spring期待在后面的版本中去扩展
+				 */
 				postProcessBeanFactory(beanFactory);
-
-				// Invoke factory processors registered as beans in the context.
+				/**
+				 * 执行BeanFactoryPostProcessors方法
+				 * 回调beanfactorypostprocessor
+				 */
 				invokeBeanFactoryPostProcessors(beanFactory);
-
 				// Register bean processors that intercept bean creation.
+				//把实现了beanpostprocessor接口的类实例化，并且加入到一个list中，beanfactory中
 				registerBeanPostProcessors(beanFactory);
-
-				// Initialize message source for this context.
+				/**
+				 * 国际化。重要程度2
+				 */
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
+				/**
+				 * 初始化事件管理类
+				 */
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
+				/**
+				 * 空的，给子类去实现。钩子方法。springboot通过这个完成了实例化
+				 */
 				onRefresh();
 
 				// Check for listener beans and register them.
+				//往事件管理类中注册事件类
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				/**
+				 * 实例化bean，重中之重
+				 * 1、bean实例化具体过程
+				 * 2、ioc
+				 * 3、注解支持
+				 * 4、beanpostprocessor的执行
+				 * 5、aop的入口
+				 */
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -589,8 +611,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		this.active.set(true);
 
 		if (logger.isInfoEnabled()) {
-			logger.info("Refreshing " + this);
 		}
+		logger.info("Refreshing " + this);
 
 		// Initialize any placeholder property sources in the context environment.
 		initPropertySources();
@@ -636,6 +658,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			logger.debug("Bean factory for " + getDisplayName() + ": " + beanFactory);
 		}
 		return beanFactory;
+	}
+
+	/**
+	 * Modify the application context's internal bean factory after its standard
+	 * initialization. All bean definitions will have been loaded, but no beans
+	 * will have been instantiated yet. This allows for registering special
+	 * BeanPostProcessors etc in certain ApplicationContext implementations.
+	 * @param beanFactory the bean factory used by the application context
+	 */
+	protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 	}
 
 	/**
@@ -685,16 +717,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		if (!beanFactory.containsLocalBean(SYSTEM_ENVIRONMENT_BEAN_NAME)) {
 			beanFactory.registerSingleton(SYSTEM_ENVIRONMENT_BEAN_NAME, getEnvironment().getSystemEnvironment());
 		}
-	}
-
-	/**
-	 * Modify the application context's internal bean factory after its standard
-	 * initialization. All bean definitions will have been loaded, but no beans
-	 * will have been instantiated yet. This allows for registering special
-	 * BeanPostProcessors etc in certain ApplicationContext implementations.
-	 * @param beanFactory the bean factory used by the application context
-	 */
-	protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 	}
 
 	/**
@@ -852,6 +874,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
 		// Initialize conversion service for this context.
+		//设置类型转器
 		if (beanFactory.containsBean(CONVERSION_SERVICE_BEAN_NAME) &&
 				beanFactory.isTypeMatch(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class)) {
 			beanFactory.setConversionService(
@@ -878,6 +901,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
+		//5星重点
 		beanFactory.preInstantiateSingletons();
 	}
 

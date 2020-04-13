@@ -83,8 +83,18 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * e.g. {@link Configuration @Configuration} classes
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
+		/**
+		 * 初始化了注册类
+		 * org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+		 * 解析@scanner @import
+		 */
 		this();
+		//将配置类装载成AnnotatedGenericBeanDefinition对象。初始化metadata。从metadata中拿到注解
+		//在初始化成beandefinition对象。注册到beandefinitionmap中
 		register(annotatedClasses);
+		/**
+		 * 最重要的方法，没有之一
+		 */
 		refresh();
 	}
 

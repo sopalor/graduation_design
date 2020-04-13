@@ -57,20 +57,6 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	}
 
 	/**
-	 * Create a new BeanDefinitionHolder.
-	 * @param beanDefinition the BeanDefinition to wrap
-	 * @param beanName the name of the bean, as specified for the bean definition
-	 * @param aliases alias names for the bean, or {@code null} if none
-	 */
-	public BeanDefinitionHolder(BeanDefinition beanDefinition, String beanName, @Nullable String[] aliases) {
-		Assert.notNull(beanDefinition, "BeanDefinition must not be null");
-		Assert.notNull(beanName, "Bean name must not be null");
-		this.beanDefinition = beanDefinition;
-		this.beanName = beanName;
-		this.aliases = aliases;
-	}
-
-	/**
 	 * Copy constructor: Create a new BeanDefinitionHolder with the
 	 * same contents as the given BeanDefinitionHolder instance.
 	 * <p>Note: The wrapped BeanDefinition reference is taken as-is;
@@ -82,6 +68,20 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 		this.beanDefinition = beanDefinitionHolder.getBeanDefinition();
 		this.beanName = beanDefinitionHolder.getBeanName();
 		this.aliases = beanDefinitionHolder.getAliases();
+	}
+
+	/**
+	 * Create a new BeanDefinitionHolder.
+	 * @param beanDefinition the BeanDefinition to wrap
+	 * @param beanName the name of the bean, as specified for the bean definition
+	 * @param aliases alias names for the bean, or {@code null} if none
+	 */
+	public BeanDefinitionHolder(BeanDefinition beanDefinition, String beanName, @Nullable String[] aliases) {
+		Assert.notNull(beanDefinition, "BeanDefinition must not be null");
+		Assert.notNull(beanName, "Bean name must not be null");
+		this.beanDefinition = beanDefinition;
+		this.beanName = beanName;
+		this.aliases = aliases;
 	}
 
 

@@ -294,7 +294,9 @@ public class CommonAnnotationBeanPostProcessor extends InitDestroyAnnotationBean
 
 	@Override
 	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
+		//看构造函数 扫描@PostConstruct @PreDestroy
 		super.postProcessMergedBeanDefinition(beanDefinition, beanType, beanName);
+		//扫描@source方法
 		InjectionMetadata metadata = findResourceMetadata(beanName, beanType, null);
 		metadata.checkConfigMembers(beanDefinition);
 	}
@@ -473,6 +475,7 @@ public class CommonAnnotationBeanPostProcessor extends InitDestroyAnnotationBean
 			throws NoSuchBeanDefinitionException {
 
 		if (StringUtils.hasLength(element.mappedName)) {
+			//resouce的getbean
 			return this.jndiFactory.getBean(element.mappedName, element.lookupType);
 		}
 		if (this.alwaysUseJndiLookup) {

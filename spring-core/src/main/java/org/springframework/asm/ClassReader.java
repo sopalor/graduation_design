@@ -547,6 +547,7 @@ public class ClassReader {
      *            option flags that can be used to modify the default behavior
      *            of this class. See {@link #SKIP_DEBUG}, {@link #EXPAND_FRAMES}
      *            , {@link #SKIP_FRAMES}, {@link #SKIP_CODE}.
+	 *            解析类的所有的信息
      */
     public void accept(final ClassVisitor classVisitor,
             final Attribute[] attrs, final int flags) {

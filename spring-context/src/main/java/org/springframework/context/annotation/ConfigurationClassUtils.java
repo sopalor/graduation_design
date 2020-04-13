@@ -108,10 +108,12 @@ abstract class ConfigurationClassUtils {
 				return false;
 			}
 		}
-
+		//是否有@configuration注解
 		if (isFullConfigurationCandidate(metadata)) {
 			beanDef.setAttribute(CONFIGURATION_CLASS_ATTRIBUTE, CONFIGURATION_CLASS_FULL);
 		}
+		//是否有@Component注解 或者类上面没注解（xml配置初始化）方法上面有@bean注解
+		//为什么要@Component也要做parse的操作。好像是因为就算是@component也有配置注解
 		else if (isLiteConfigurationCandidate(metadata)) {
 			beanDef.setAttribute(CONFIGURATION_CLASS_ATTRIBUTE, CONFIGURATION_CLASS_LITE);
 		}
@@ -122,6 +124,7 @@ abstract class ConfigurationClassUtils {
 		// It's a full or lite configuration candidate... Let's determine the order value, if any.
 		Integer order = getOrder(metadata);
 		if (order != null) {
+			//xml里面的meta标签
 			beanDef.setAttribute(ORDER_ATTRIBUTE, order);
 		}
 

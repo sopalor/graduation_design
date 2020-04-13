@@ -177,6 +177,7 @@ public class InjectionMetadata {
 			if (this.isField) {
 				Field field = (Field) this.member;
 				ReflectionUtils.makeAccessible(field);
+				//getbean反射注入
 				field.set(target, getResourceToInject(target, requestingBeanName));
 			}
 			else {

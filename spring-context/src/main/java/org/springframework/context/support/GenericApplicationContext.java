@@ -105,6 +105,7 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * Create a new GenericApplicationContext.
 	 * @see #registerBeanDefinition
 	 * @see #refresh
+	 * 一个工厂
 	 */
 	public GenericApplicationContext() {
 		this.beanFactory = new DefaultListableBeanFactory();
@@ -283,15 +284,6 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	}
 
 	/**
-	 * Return the single internal BeanFactory held by this context
-	 * (as ConfigurableListableBeanFactory).
-	 */
-	@Override
-	public final ConfigurableListableBeanFactory getBeanFactory() {
-		return this.beanFactory;
-	}
-
-	/**
 	 * Return the underlying bean factory of this context,
 	 * available for registering bean definitions.
 	 * <p><b>NOTE:</b> You need to call {@link #refresh()} to initialize the
@@ -300,6 +292,15 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * @return the internal bean factory (as DefaultListableBeanFactory)
 	 */
 	public final DefaultListableBeanFactory getDefaultListableBeanFactory() {
+		return this.beanFactory;
+	}
+
+	/**
+	 * Return the single internal BeanFactory held by this context
+	 * (as ConfigurableListableBeanFactory).
+	 */
+	@Override
+	public final ConfigurableListableBeanFactory getBeanFactory() {
 		return this.beanFactory;
 	}
 

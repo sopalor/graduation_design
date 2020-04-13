@@ -138,11 +138,13 @@ class ConfigurationClassBeanDefinitionReader {
 		if (configClass.isImported()) {
 			registerBeanDefinitionForImportedConfigurationClass(configClass);
 		}
+		//通过parse得到的@bean 的method方法实例化一个beandefinition对象
 		for (BeanMethod beanMethod : configClass.getBeanMethods()) {
 			loadBeanDefinitionsForBeanMethod(beanMethod);
 		}
-
+		//onfigClass.getImportedResources() 这个也是parse得到的
 		loadBeanDefinitionsFromImportedResources(configClass.getImportedResources());
+		//调用registerBeanDefinitions    注解aop就是在这里调用的
 		loadBeanDefinitionsFromRegistrars(configClass.getImportBeanDefinitionRegistrars());
 	}
 
@@ -214,6 +216,7 @@ class ConfigurationClassBeanDefinitionReader {
 
 		if (metadata.isStatic()) {
 			// static @Bean method
+			// 略略略略略略
 			beanDef.setBeanClassName(configClass.getMetadata().getClassName());
 			beanDef.setFactoryMethodName(methodName);
 		}
@@ -325,6 +328,7 @@ class ConfigurationClassBeanDefinitionReader {
 				}
 				else {
 					// Primarily ".xml" files but for any other extension as well
+					//委托解析类
 					readerClass = XmlBeanDefinitionReader.class;
 				}
 			}
@@ -349,6 +353,7 @@ class ConfigurationClassBeanDefinitionReader {
 			}
 
 			// TODO SPR-6310: qualify relative path locations as done in AbstractContextLoader.modifyLocations
+			//很熟。或者叫全剧终
 			reader.loadBeanDefinitions(resource);
 		});
 	}
